@@ -3,22 +3,27 @@
     "airbnb",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
     "prettier"
   ],
-   "overrides": [
+  "overrides": [
     {
       "files": ["*.ts", "*.tsx"]
     }
   ],
-  "ignorePatterns":["dist",
+
+  "ignorePatterns": [
+    "dist",
     "node_modules/",
     ".eslintrc.cjs",
     "*.config.js",
     "*.config.ts",
     "vite.config.ts",
-    "coverage"],
+    "coverage"
+  ],
   "parserOptions": {
-    "ecmaVersion":"latest",
+    "ecmaVersion": "latest",
     "sourceType": "module",
     "project": ["./tsconfig.json"],
     "tsconfigRootDir": "./",
@@ -26,9 +31,18 @@
       "jsx": true
     }
   },
-  "plugins": ["@typescript-eslint", "react"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true, // Optional, dar ajută la rezolvarea tipurilor din node_modules
+        "project": "./tsconfig.json"
+      }
+    }
+  },
+  "plugins": ["@typescript-eslint", "react", "import"],
   "parser": "@typescript-eslint/parser",
   "rules": {
+    "react/style-prop-object": 0,
     "@typescript-eslint/no-shadow": 0,
     "@typescript-eslint/consistent-type-imports": [
       "error",
@@ -57,7 +71,7 @@
     "no-restricted-syntax": 0,
     "@typescript-eslint/no-loop-func": 0,
 
-    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx", ".png"] }],
     "react/jsx-sort-props": [
       2,
       {
